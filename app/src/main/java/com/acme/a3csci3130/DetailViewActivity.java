@@ -3,12 +3,11 @@ package com.acme.a3csci3130;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 
 public class DetailViewActivity extends Activity {
 
-    private EditText nameField, emailField;
+    private EditText businessNumberField, nameField, primaryBusinessField, addressField, provinceField;
     Contact receivedPersonInfo;
 
     @Override
@@ -17,12 +16,18 @@ public class DetailViewActivity extends Activity {
         setContentView(R.layout.activity_detail_view);
         receivedPersonInfo = (Contact)getIntent().getSerializableExtra("Contact");
 
+        businessNumberField = (EditText) findViewById(R.id.businessNumber);
         nameField = (EditText) findViewById(R.id.name);
-        emailField = (EditText) findViewById(R.id.email);
+        primaryBusinessField = (EditText) findViewById(R.id.primaryBusiness);
+        addressField = (EditText) findViewById(R.id.address);
+        provinceField = (EditText) findViewById(R.id.province);
 
         if(receivedPersonInfo != null){
+            businessNumberField.setText(receivedPersonInfo.businessNumber);
             nameField.setText(receivedPersonInfo.name);
-            emailField.setText(receivedPersonInfo.email);
+            primaryBusinessField.setText(receivedPersonInfo.business);
+            addressField.setText(receivedPersonInfo.address);
+            provinceField.setText(receivedPersonInfo.province);
         }
     }
 
