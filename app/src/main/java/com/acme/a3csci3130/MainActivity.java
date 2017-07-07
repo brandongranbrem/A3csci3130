@@ -11,12 +11,20 @@ import android.widget.TextView;
 import com.firebase.ui.database.FirebaseListAdapter;
 import com.google.firebase.database.FirebaseDatabase;
 
+/**
+ * Activity class to connect to the create and view contact activities
+ * @author Brandon Bremner
+ */
 public class MainActivity extends Activity {
 
 
     private ListView contactListView;
     private FirebaseListAdapter<Contact> firebaseAdapter;
 
+    /**
+     * Method to configure the database and the list view which will display the data stored in the database
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,19 +60,23 @@ public class MainActivity extends Activity {
         });
     }
 
-    public void createContactButton(View v)
-    {
+    /**
+     * Method called when create new activity button is pressed
+     * @param v  the current view
+     */
+    public void createContactButton(View v) {
         Intent intent=new Intent(this, CreateContactAcitivity.class);
         startActivity(intent);
     }
 
-    private void showDetailView(Contact person)
-    {
+    /**
+     * Method called when a business contact name in the list is selected to display further
+     * details of the busines
+     * @param person
+     */
+    private void showDetailView(Contact person) {
         Intent intent = new Intent(this, DetailViewActivity.class);
         intent.putExtra("Contact", person);
         startActivity(intent);
     }
-
-
-
 }
